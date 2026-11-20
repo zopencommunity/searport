@@ -1,5 +1,5 @@
-# bump: sear-version /SEAR_VERSION="(.*)"/ https://github.com/Mainframe-Renewal-Project/sear/archive/refs/tags/v0.7.1.tar.gz|semver:*
-# SEAR_VERSION="V.R.M"
+# bump: sear-version /SEAR_VERSION="(.*)"/ https://github.com/Mainframe-Renewal-Project/sear.git|semver:*
+SEAR_VERSION="0.7.1"
 
 ###
 ### Build control file for the sear port
@@ -10,7 +10,7 @@
 ###
 export ZOPEN_PROJECT_NAME="sear"
 export ZOPEN_BUILD_LINE="STABLE"
-export ZOPEN_STABLE_URL="https://github.com/Mainframe-Renewal-Project/sear/archive/refs/tags/v0.7.1.tar.gz"
+export ZOPEN_STABLE_URL="https://github.com/Mainframe-Renewal-Project/sear/archive/refs/tags/v${SEAR_VERSION}.tar.gz"
 export ZOPEN_STABLE_DEPS="cmake make openssl"
 export ZOPEN_DEV_URL="https://github.com/Mainframe-Renewal-Project/sear.git"
 export ZOPEN_DEV_DEPS="cmake make openssl"
@@ -114,8 +114,7 @@ zopen_check_results() {
 fi
 
 zopen_get_version() {
-  sear_release=${ZOPEN_STABLE_URL##*/v}
-  printf '%s\n' "${sear_release%.tar.gz}"
+  printf '%s\n' "${SEAR_VERSION}"
 }
 
 
